@@ -1,4 +1,4 @@
-package = 'mock'
+package = 'lua-mock'
 version = '1.0'
 source = {
    module = 'https://github.com/henry4k/lua-mock.git',
@@ -7,6 +7,8 @@ source = {
 description = {
    summary = 'Provides mocking utilities.',
    license = 'UNLICENCE'
+   homepage = 'https://github.com/henry4k/lua-mock',
+   maintainer = 'Henry Kielmann'
 }
 dependencies = {
    'lua >= 5.1'
