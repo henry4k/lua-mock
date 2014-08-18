@@ -1,17 +1,16 @@
 package = 'lua-mock'
-version = '1.0'
+version = '1.0-1'
 source = {
-   module = 'https://github.com/henry4k/lua-mock.git',
-   branch = '1.0'
+    url = 'https://github.com/henry4k/lua-mock/archive/v1.0-1.tar.gz'
 }
 description = {
-   summary = 'Provides mocking utilities.',
-   license = 'UNLICENCE'
-   homepage = 'https://github.com/henry4k/lua-mock',
-   maintainer = 'Henry Kielmann'
+    summary = 'Provides mocking utilities.',
+    license = 'UNLICENCE',
+    homepage = 'https://github.com/henry4k/lua-mock',
+    maintainer = 'Henry Kielmann'
 }
 dependencies = {
-   'lua >= 5.1'
+    'lua >= 5.1'
 }
 build = {
     type = 'builtin',
