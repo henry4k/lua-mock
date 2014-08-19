@@ -24,6 +24,11 @@ function Spy.mt:__call( ... )
     return self.wrappedFn(...)
 end
 
+function Spy.prototype:reset()
+    self.calls = {}
+    self.selectedCall = 1
+end
+
 function Spy.prototype:assertCallCount( count )
     assert(#self.calls == count,
            'Should be called '..count..' times, but was called '..#self.calls..' times.')
