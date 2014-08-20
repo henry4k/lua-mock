@@ -30,14 +30,15 @@ function Spy.prototype:reset()
 end
 
 function Spy.prototype:assertCallCount( count )
-    assert(#self.calls == count,
-           'Should be called '..count..' times, but was called '..#self.calls..' times.')
+    if #self.calls ~= count then
+        error('Should be called '..count..' times, but was called '..#self.calls..' times.', 2)
+    end
 end
 
 function Spy.prototype:assertCalledWith( ... )
     self:assertCallCount(self.selectedCall)
     local call = self.calls[self.selectedCall]
-    ArgumentMatcher.assertMatch(call, {...})
+    ArgumentMatcher.assertMatch(call, {...}, 2)
     self.selectedCall = self.selectedCall + 1
 end
 

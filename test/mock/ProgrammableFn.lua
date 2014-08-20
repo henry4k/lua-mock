@@ -19,7 +19,9 @@ end
 
 function ProgrammableFn.mt:__call( ... )
     local behaviour = self:findMatchingBehaviour({...})
-    assert(behaviour, 'No matching behaviour for call.')
+    if not behaviour then
+        error('No matching behaviour for call.', 2)
+    end
     return table.unpack(behaviour.returns)
 end
 

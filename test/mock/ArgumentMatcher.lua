@@ -34,10 +34,10 @@ function ArgumentMatcher.matches( args, matchers )
     return matches
 end
 
-function ArgumentMatcher.assertMatch( args, matchers )
+function ArgumentMatcher.assertMatch( args, matchers, level )
     local matches, errorMessage = testMatch(args, matchers)
     if not matches then
-        error(errorMessage)
+        error(errorMessage, level or 2)
     end
 end
 
