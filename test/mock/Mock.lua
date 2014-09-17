@@ -6,6 +6,12 @@ local Mock =
 {
     mt = {}
 }
+setmetatable(Mock, Mock)
+
+
+function Mock:__call()
+    return self:new()
+end
 
 function Mock:new()
     local programmable = ProgrammableFn:new()

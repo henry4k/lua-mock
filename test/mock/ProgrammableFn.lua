@@ -8,7 +8,12 @@ local ProgrammableFn =
 }
 ProgrammableFn.mt.__index = ProgrammableFn.prototype
 setmetatable(ProgrammableFn.prototype, ProgrammableFn.prototype)
+setmetatable(ProgrammableFn, ProgrammableFn)
 
+
+function ProgrammableFn:__call()
+    return self:new()
+end
 
 function ProgrammableFn:new()
     local instance = {

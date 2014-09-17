@@ -8,7 +8,12 @@ local Spy =
 }
 Spy.mt.__index = Spy.prototype
 setmetatable(Spy.prototype, Spy.prototype)
+setmetatable(Spy, Spy)
 
+
+function Spy:__call( wrappedFn )
+    return self:new(wrappedFn)
+end
 
 function Spy:new( wrappedFn )
     local instance = {
