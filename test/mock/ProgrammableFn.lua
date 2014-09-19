@@ -46,5 +46,9 @@ function ProgrammableFn.prototype:whenCalledWith( behaviour )
     table.insert(self.behaviours, behaviour)
 end
 
+function ProgrammableFn.prototype:reset()
+    self.behaviours = {}
+end
+
 
 return ProgrammableFn
