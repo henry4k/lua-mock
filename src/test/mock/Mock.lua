@@ -26,8 +26,8 @@ function Mock:new()
     return setmetatable(instance, self.mt)
 end
 
-function Mock.prototype:whenCalledWith( behaviour )
-    self.programmable:whenCalledWith(behaviour)
+function Mock.prototype:whenCalled( behaviour )
+    self.programmable:whenCalled(behaviour)
 end
 
 function Mock.mt:__call( ... )
@@ -43,8 +43,8 @@ function Mock.prototype:assertCallCount( count )
     self.spy:assertCallCount(count)
 end
 
-function Mock.prototype:assertCalledWith( ... )
-    self.spy.assertCalledWith(...)
+function Mock.prototype:assertCall( call )
+    self.spy.assertCall(call)
 end
 
 

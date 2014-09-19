@@ -10,14 +10,14 @@ description = {
     maintainer = 'Henry Kielmann'
 }
 dependencies = {
-    'lua >= 5.1'
+    'lua >= 5.2'
 }
 build = {
     type = 'builtin',
     modules = {
-        ['test.mock.ArgumentMatcher'] = 'test/mock/ArgumentMatcher.lua',
-        ['test.mock.Mock']            = 'test/mock/Mock.lua',
-        ['test.mock.ProgrammableFn']  = 'test/mock/ProgrammableFn.lua',
-        ['test.mock.Spy']             = 'test/mock/Spy.lua'
+        ['test.mock.ArgumentMatcher'] = 'src/test/mock/ArgumentMatcher.lua',
+        ['test.mock.Mock']            = 'src/test/mock/Mock.lua',
+        ['test.mock.ProgrammableFn']  = 'src/test/mock/ProgrammableFn.lua',
+        ['test.mock.Spy']             = 'src/test/mock/Spy.lua'
     }
 }

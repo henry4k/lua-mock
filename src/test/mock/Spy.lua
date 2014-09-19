@@ -1,6 +1,8 @@
-local ArgumentMatcher = require 'test/mock/ArgumentMatcher'
+local ValueMatcher = require 'test/mock/ValueMatcher'
 
 
+--- Wraps a function and records the calls.
+-- For each call the arguments and return values are saved.
 local Spy =
 {
     mt = {},
@@ -25,8 +27,13 @@ function Spy:new( wrappedFn )
 end
 
 function Spy.mt:__call( ... )
-    table.insert(self.calls, {...})
-    return self.wrappedFn(...)
+    local returnValues = { self.wrappedFn(...) }
+    local call = {
+        arguments = {...},
+        returnValues = returnValues
+    }
+    table.insert(self.calls, call)
+    return table.unpack(returnValues)
 end
 
 function Spy.prototype:reset()
@@ -40,10 +47,11 @@ function Spy.prototype:assertCallCount( count )
     end
 end
 
-function Spy.prototype:assertCalledWith( ... )
+function Spy.prototype:assertCall( callMatcher )
     self:assertCallCount(self.selectedCall)
     local call = self.calls[self.selectedCall]
-    ArgumentMatcher.assertMatch(call, {...}, 2)
+    ValueMatcher.assertMatch(call.arguments, callMatcher, 'Argument', 2)
+    ValueMatcher.assertMatch(call.returnValues, callMatcher.returned, 'Return value', 2)
     self.selectedCall = self.selectedCall + 1
 end
 
