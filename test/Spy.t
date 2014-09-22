@@ -9,7 +9,7 @@ local Spy = require 'test/mock/Spy'
 add = Spy(function( a, b ) return a+b end)
 
 
-plan(12)
+plan(13)
 
 lives_ok('add:assertCallCount(0)',
              'assertCallCount(0) succeeds before spy was called.')
