@@ -69,8 +69,8 @@ end
 
 --- Tests multiple values.
 -- Like a #matchValue it returns `true` if all values matched or `false` with
--- an error message if a value did not match.
-local function matchValues( values, matchedValues, typeName )
+-- the according index and an error message if a value did not match.
+local function matchValues( values, matchedValues )
     typeName = typeName or 'Value'
 
     if #values ~= #matchedValues then
@@ -80,10 +80,9 @@ local function matchValues( values, matchedValues, typeName )
 
     for i,matchedValue in ipairs(matchedValues) do
         local value = values[i]
-        local matched, message = matchValue(context, value, matchedValue)
+        local matched, message = matchValue(value, matchedValue)
         if not matched then
-            local messagePrefix = ('%s #%d: '):format(typeName, i)
-            return false, messagePrefix..message
+            return false, i, message
         end
     end
 
@@ -101,22 +100,9 @@ local ValueMatcher = {}
 --
 -- @return
 -- `true` if all values match or `false` if at least one don't.
+-- Also returns the value index and a reason when failing.
 function ValueMatcher.matches( value, matchedValues )
-    local matches = matchValues(value, matchedValues)
-    return matches
-end
-
---- Tests if the values match `matchedValues`.
--- If a value doesn't matches, an error with the according message will be raised.
---
--- @param matchedValues
--- A list that consists of regular values or matchers.
-function ValueMatcher.assertMatch( values, matchedValues, typeName, level )
-    level = level or 1
-    local matches, message = matchValues(values, matchedValues, typeName)
-    if not matches then
-        error(message, level+1)
-    end
+    return matchValues(value, matchedValues)
 end
 
 --- Matches any value.
