@@ -14,9 +14,9 @@ plan(4)
 error_like('fn(1,2)', '.+',
            'fn(1,2) fails without any programmed behaviours.')
 
-fn:whenCalled{with={1,2}, thenReturn={3}}
-fn:whenCalled{with={2,3}, thenReturn={5}}
-fn:whenCalled{with={3,4}, thenReturn={7}}
+fn:canBeCalled{with={1,2}, thenReturn={3}}
+fn:canBeCalled{with={2,3}, thenReturn={5}}
+fn:canBeCalled{with={3,4}, thenReturn={7}}
 
 is(fn(2,3), 5, 'Behaviour for fn(2,3) matches and returns 5.')
 

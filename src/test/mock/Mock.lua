@@ -28,8 +28,8 @@ function Mock:new()
     return setmetatable(instance, self.mt)
 end
 
-function Mock.prototype:whenCalled( behaviour )
-    self.programmable:whenCalled(behaviour)
+function Mock.prototype:canBeCalled( behaviour )
+    self.programmable:canBeCalled(behaviour)
     return self
 end
 

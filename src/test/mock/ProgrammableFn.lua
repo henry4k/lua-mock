@@ -65,8 +65,8 @@ end
 -- The specification is a table, that contains the arguments that must match to
 -- trigger this behaviour and the values that will be returned then.
 -- Both are optional and can be passed like this:
--- `whenCalled{with={1,2}, thenReturn={3}}`
-function ProgrammableFn.prototype:whenCalled( specification )
+-- `canBeCalled{with={1,2}, thenReturn={3}}`
+function ProgrammableFn.prototype:canBeCalled( specification )
     local arguments = specification.with or {}
     local returnSet = specification.thenReturn or {}
 
