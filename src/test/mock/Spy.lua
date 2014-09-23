@@ -35,8 +35,10 @@ end
 
 function Spy.prototype:reset()
     self.calls = {}
+    return self
 end
 
+--- Test if the spy was called exactly `count` times.
 function Spy.prototype:assertCallCount( count )
     if #self.calls ~= count then
         error('Should be called '..count..' times, but was called '..#self.calls..' times.', 2)
@@ -45,6 +47,7 @@ function Spy.prototype:assertCallCount( count )
 end
 
 function Spy.prototype:getSelectedCalls_( query, level )
+    level = level or 1
     local selectedCalls = {}
 
     if query.atIndex then
@@ -71,6 +74,15 @@ end
 local argumentMismatchedMessage = 'Argument %d of call %d mismatched:  %s'
 local returnValueMismatchedMessage = 'Return value %d of call %d mismatched:  %s'
 
+--- Test if some calls match specific properties.
+--
+-- Specify a set of calls to test, by adding:
+-- - 'atIndex': Test only the call at the given index.
+-- - nothing: Acts as a wildcard and will select all calls.
+--
+-- Specify a set of call attributes to test, by adding:
+-- - 'arguments': A list of value matchers, that is compared to the actual arguments.
+-- - 'returnValues': A list of value matchers, that is compared to the actual return values.
 function Spy.prototype:assertCallMatches( query, level )
     level = level or 1
 
@@ -103,6 +115,9 @@ function Spy.prototype:assertCallMatches( query, level )
     return self
 end
 
+--- Test if at least one call match specific properties.
+-- Acts like #Spy.prototype:assertCallMatches, but succeeds if at least one
+-- call matches.
 function Spy.prototype:assertAnyCallMatches( query, level )
     level = level or 1
 

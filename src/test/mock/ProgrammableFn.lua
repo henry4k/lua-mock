@@ -81,10 +81,13 @@ function ProgrammableFn.prototype:whenCalled( specification )
         }
         table.insert(self.behaviours, behaviour)
     end
+
+    return self
 end
 
 function ProgrammableFn.prototype:reset()
     self.behaviours = {}
+    return self
 end
 
 
