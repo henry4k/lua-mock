@@ -33,9 +33,9 @@ local function behaviourReturnValues( behaviour )
     local returnSet = behaviour.returnSets[next]
 
     if next < #behaviour.returnSets then
-        next = 1
-    else
         next = next + 1
+    else
+        next = 1
     end
     behaviour.nextReturnSet = next
 
