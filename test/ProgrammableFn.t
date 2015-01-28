@@ -3,7 +3,7 @@
 package.path = package.path..';src/?.lua'
 require 'Test.More'
 
-local ProgrammableFn = require 'test/mock/ProgrammableFn'
+local ProgrammableFn = require 'test.mock.ProgrammableFn'
 
 
 fn = ProgrammableFn()

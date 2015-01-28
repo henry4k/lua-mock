@@ -1,5 +1,5 @@
-local ProgrammableFn = require 'test/mock/ProgrammableFn'
-local Spy = require 'test/mock/Spy'
+local ProgrammableFn = require 'test.mock.ProgrammableFn'
+local Spy = require 'test.mock.Spy'
 
 
 --- Combination of Spy and ProgrammableFn.

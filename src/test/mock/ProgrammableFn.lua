@@ -1,4 +1,4 @@
-local ValueMatcher = require 'test/mock/ValueMatcher'
+local ValueMatcher = require 'test.mock.ValueMatcher'
 
 
 --- Creates an easily programmable function for testing purposes.

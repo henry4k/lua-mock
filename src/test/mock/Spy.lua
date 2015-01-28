@@ -1,4 +1,4 @@
-local ValueMatcher = require 'test/mock/ValueMatcher'
+local ValueMatcher = require 'test.mock.ValueMatcher'
 
 
 --- Wraps a function and records the calls.

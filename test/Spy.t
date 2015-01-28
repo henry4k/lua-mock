@@ -3,7 +3,7 @@
 package.path = package.path..';src/?.lua'
 require 'Test.More'
 
-local Spy = require 'test/mock/Spy'
+local Spy = require 'test.mock.Spy'
 
 
 add = Spy(function( a, b ) return a+b end)

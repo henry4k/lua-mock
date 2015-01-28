@@ -3,7 +3,7 @@
 package.path = package.path..';src/?.lua'
 require 'Test.More'
 
-local vm = require 'test/mock/ValueMatcher'
+local vm = require 'test.mock.ValueMatcher'
 
 plan(9)
 ok(vm.matches({1,2,3}, {1,2,3}), 'Simple values.')
