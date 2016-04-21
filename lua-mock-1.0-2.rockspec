@@ -1,7 +1,7 @@
 package = 'lua-mock'
-version = '1.0-1'
+version = '1.0-2'
 source = {
-    url = 'https://github.com/henry4k/lua-mock/archive/v1.0-1.tar.gz'
+    url = 'https://github.com/henry4k/lua-mock/archive/v1.0-2.tar.gz'
 }
 description = {
     summary = 'Provides mocking utilities.',
