@@ -1,0 +1,9 @@
+-- vim: set filetype=lua:
+project = 'lua-mock'
+format = 'markdown'
+topics = { 'README.md' }
+file = 'src'
+not_luadoc = true
+no_space_before_args = true
+sort_modules = true
+style = '!fixed'

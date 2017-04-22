@@ -1,6 +1,6 @@
 #!/usr/bin/env lua
 -- vim: set filetype=lua:
-package.path = package.path..';src/?.lua'
+package.path = 'src/?.lua;'..package.path
 require 'Test.More'
 
 local Spy = require 'test.mock.Spy'

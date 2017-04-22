@@ -1,31 +1,17 @@
-local ValueMatcher = require 'test.mock.ValueMatcher'
-
-
+--- @classmod ProgrammableFn
 --- Creates an easily programmable function for testing purposes.
 -- Multiple behaviours can be defined.
 -- A behaviour consists of a set of arguments and a set of return values.
 -- If the function is called with these arguments it will return the programmed
 -- return values.
-local ProgrammableFn =
-{
-    mt = {},
-    prototype = {}
-}
-ProgrammableFn.mt.__index = ProgrammableFn.prototype
-setmetatable(ProgrammableFn.prototype, ProgrammableFn.prototype)
-setmetatable(ProgrammableFn, ProgrammableFn)
 
 
-function ProgrammableFn:__call()
-    return self:new()
-end
+local ValueMatcher = require 'test.mock.ValueMatcher'
 
-function ProgrammableFn:new()
-    local instance = {
-        behaviours = {}
-    }
-    return setmetatable(instance, self.mt)
-end
+
+local ProgrammableFn = {}
+ProgrammableFn.__index = ProgrammableFn
+
 
 local function behaviourReturnValues( behaviour )
     local next = behaviour.nextReturnSet
@@ -42,7 +28,7 @@ local function behaviourReturnValues( behaviour )
     return table.unpack(returnSet)
 end
 
-function ProgrammableFn.mt:__call( ... )
+function ProgrammableFn:__call( ... )
     local behaviour = self:findMatchingBehaviour_({...})
     if not behaviour then
         error('No matching behaviour for call.', 2)
@@ -50,7 +36,7 @@ function ProgrammableFn.mt:__call( ... )
     return behaviourReturnValues(behaviour)
 end
 
-function ProgrammableFn.prototype:findMatchingBehaviour_( arguments )
+function ProgrammableFn:findMatchingBehaviour_( arguments )
     for _,behaviour in ipairs(self.behaviours) do
         if ValueMatcher.matches(arguments, behaviour.arguments) then
             return behaviour
@@ -65,8 +51,8 @@ end
 -- The specification is a table, that contains the arguments that must match to
 -- trigger this behaviour and the values that will be returned then.
 -- Both are optional and can be passed like this:
--- `canBeCalled{with={1,2}, thenReturn={3}}`
-function ProgrammableFn.prototype:canBeCalled( specification )
+-- `whenCalled{with={1,2}, thenReturn={3}}`
+function ProgrammableFn:whenCalled( specification )
     local arguments = specification.with or {}
     local returnSet = specification.thenReturn or {}
 
@@ -85,10 +71,15 @@ function ProgrammableFn.prototype:canBeCalled( specification )
     return self
 end
 
-function ProgrammableFn.prototype:reset()
+function ProgrammableFn:reset()
     self.behaviours = {}
     return self
 end
 
 
-return ProgrammableFn
+return function()
+    local self = {
+        behaviours = {}
+    }
+    return setmetatable(self, ProgrammableFn)
+end

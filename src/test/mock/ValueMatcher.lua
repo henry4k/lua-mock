@@ -1,3 +1,5 @@
+--- @module ValueMatcher
+
 local valueMismatchMessage =
     'did not match:\n'..
     '     was: %s\n'..
@@ -95,6 +97,8 @@ local ValueMatcher = {}
 
 --- Tests if the values match `matchedValues`.
 --
+-- @param value
+--
 -- @param matchedValues
 -- A list that consists of regular values or matchers.
 --
@@ -130,12 +134,25 @@ ValueMatcher.matchType = function( typeName )
     end)
 end
 
+--- Matches a boolean value.
 ValueMatcher.anyBoolean  = ValueMatcher.matchType('boolean')
+
+--- Matches a number.
 ValueMatcher.anyNumber   = ValueMatcher.matchType('number')
+
+--- Matches a string.
 ValueMatcher.anyString   = ValueMatcher.matchType('string')
+
+--- Matches a table.
 ValueMatcher.anyTable    = ValueMatcher.matchType('table')
+
+--- Matches a function.
 ValueMatcher.anyFunction = ValueMatcher.matchType('function')
+
+--- Matches a thread.
 ValueMatcher.anyThread   = ValueMatcher.matchType('thread')
+
+--- Matches a user data.
 ValueMatcher.anyUserData = ValueMatcher.matchType('userdata')
 
 

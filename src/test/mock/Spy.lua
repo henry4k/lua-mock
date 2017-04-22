@@ -1,29 +1,16 @@
+--- @classmod Spy
+--- Wraps a function and records the calls.
+-- For each call the arguments and return values are saved.
+
+
 local ValueMatcher = require 'test.mock.ValueMatcher'
 
 
---- Wraps a function and records the calls.
--- For each call the arguments and return values are saved.
-local Spy =
-{
-    mt = {},
-    prototype = {}
-}
-Spy.mt.__index = Spy.prototype
-setmetatable(Spy.prototype, Spy.prototype)
-setmetatable(Spy, Spy)
+local Spy = {}
+Spy.__index = Spy
 
 
-function Spy:__call( wrappedFn )
-    return self:new(wrappedFn)
-end
-
-function Spy:new( wrappedFn )
-    local instance = setmetatable({ wrappedFn = wrappedFn }, self.mt)
-    instance:reset()
-    return instance
-end
-
-function Spy.mt:__call( ... )
+function Spy:__call( ... )
     local returnValues = { self.wrappedFn(...) }
     local call = {
         arguments = {...},
@@ -33,20 +20,20 @@ function Spy.mt:__call( ... )
     return table.unpack(returnValues)
 end
 
-function Spy.prototype:reset()
+function Spy:reset()
     self.calls = {}
     return self
 end
 
 --- Test if the spy was called exactly `count` times.
-function Spy.prototype:assertCallCount( count )
+function Spy:assertCallCount( count )
     if #self.calls ~= count then
         error('Should be called '..count..' times, but was called '..#self.calls..' times.', 2)
     end
     return self
 end
 
-function Spy.prototype:getSelectedCalls_( query, level )
+function Spy:_getSelectedCalls( query, level )
     level = level or 1
     local selectedCalls = {}
 
@@ -83,10 +70,10 @@ local returnValueMismatchedMessage = 'Return value %d of call %d mismatched:  %s
 -- Specify a set of call attributes to test, by adding:
 -- - 'arguments': A list of value matchers, that is compared to the actual arguments.
 -- - 'returnValues': A list of value matchers, that is compared to the actual return values.
-function Spy.prototype:assertCallMatches( query, level )
+function Spy:assertCallMatches( query, level )
     level = level or 1
 
-    local selectedCalls = self:getSelectedCalls_(query, level+1)
+    local selectedCalls = self:_getSelectedCalls(query, level+1)
 
     for callIndex, call in ipairs(selectedCalls) do
         if query.arguments then
@@ -116,12 +103,12 @@ function Spy.prototype:assertCallMatches( query, level )
 end
 
 --- Test if at least one call match specific properties.
--- Acts like #Spy.prototype:assertCallMatches, but succeeds if at least one
+-- Acts like #Spy:assertCallMatches, but succeeds if at least one
 -- call matches.
-function Spy.prototype:assertAnyCallMatches( query, level )
+function Spy:assertAnyCallMatches( query, level )
     level = level or 1
 
-    local selectedCalls = self:getSelectedCalls_(query, level+1)
+    local selectedCalls = self:_getSelectedCalls(query, level+1)
 
     local oneMatched = false
     for _, call in ipairs(selectedCalls) do
@@ -149,4 +136,8 @@ function Spy.prototype:assertAnyCallMatches( query, level )
 end
 
 
-return Spy
+return function( wrappedFn )
+    local self = setmetatable({ wrappedFn = wrappedFn }, Spy)
+    self:reset()
+    return self
+end
