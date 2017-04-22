@@ -7,3 +7,4 @@ not_luadoc = true
 no_space_before_args = true
 sort_modules = true
 style = '!fixed'
+dir = 'docs'
