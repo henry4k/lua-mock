@@ -1,5 +1,5 @@
 package = 'lua-mock'
-version = '2.0'
+version = '2.0-1'
 source = {
     url = 'https://github.com/henry4k/lua-mock/archive/v2.0.tar.gz'
 }
