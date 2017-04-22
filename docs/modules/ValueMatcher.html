@@ -1,0 +1,324 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../ldoc_fixed.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>lua-mock</h1>
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+<li><a href="#Fields">Fields</a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><strong>ValueMatcher</strong></li>
+</ul>
+<h2>Classes</h2>
+<ul class="nowrap">
+  <li><a href="../classes/Mock.html">Mock</a></li>
+  <li><a href="../classes/ProgrammableFn.html">ProgrammableFn</a></li>
+  <li><a href="../classes/Spy.html">Spy</a></li>
+</ul>
+<h2>Topics</h2>
+<ul class="">
+  <li><a href="../topics/README.md.html">README</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>ValueMatcher</code></h1>
+<p>
+
+</p>
+<p>
+
+</p>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#matches">matches(value, matchedValues)</a></td>
+	<td class="summary">Tests if the values match <code>matchedValues</code>.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#matchType">matchType(typeName)</a></td>
+	<td class="summary">Matches a specific value type.</td>
+	</tr>
+</table>
+<h2><a href="#Fields">Fields</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#any">any</a></td>
+	<td class="summary">Matches any value.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#notNil">notNil</a></td>
+	<td class="summary">Matches any value but nil.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#anyBoolean">anyBoolean</a></td>
+	<td class="summary">Matches a boolean value.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#anyNumber">anyNumber</a></td>
+	<td class="summary">Matches a number.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#anyString">anyString</a></td>
+	<td class="summary">Matches a string.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#anyTable">anyTable</a></td>
+	<td class="summary">Matches a table.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#anyFunction">anyFunction</a></td>
+	<td class="summary">Matches a function.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#anyThread">anyThread</a></td>
+	<td class="summary">Matches a thread.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#anyUserData">anyUserData</a></td>
+	<td class="summary">Matches a user data.</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "matches"></a>
+    <strong>matches(value, matchedValues)</strong>
+    </dt>
+    <dd>
+    Tests if the values match <code>matchedValues</code>.
+ A list that consists of regular values or matchers.</p>
+
+<p> Also returns the value index and a reason when failing.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">value</span>
+
+
+
+        </li>
+        <li><span class="parameter">matchedValues</span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+         <code>true</code> if all values match or <code>false</code> if at least one don't.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "matchType"></a>
+    <strong>matchType(typeName)</strong>
+    </dt>
+    <dd>
+    Matches a specific value type.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">typeName</span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+</dl>
+    <h2 class="section-header "><a name="Fields"></a>Fields</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "any"></a>
+    <strong>any</strong>
+    </dt>
+    <dd>
+    Matches any value.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "notNil"></a>
+    <strong>notNil</strong>
+    </dt>
+    <dd>
+    Matches any value but nil.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "anyBoolean"></a>
+    <strong>anyBoolean</strong>
+    </dt>
+    <dd>
+    Matches a boolean value.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "anyNumber"></a>
+    <strong>anyNumber</strong>
+    </dt>
+    <dd>
+    Matches a number.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "anyString"></a>
+    <strong>anyString</strong>
+    </dt>
+    <dd>
+    Matches a string.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "anyTable"></a>
+    <strong>anyTable</strong>
+    </dt>
+    <dd>
+    Matches a table.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "anyFunction"></a>
+    <strong>anyFunction</strong>
+    </dt>
+    <dd>
+    Matches a function.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "anyThread"></a>
+    <strong>anyThread</strong>
+    </dt>
+    <dd>
+    Matches a thread.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "anyUserData"></a>
+    <strong>anyUserData</strong>
+    </dt>
+    <dd>
+    Matches a user data.
+
+
+
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2017-04-22 20:59:29 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>
