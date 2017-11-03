@@ -44,7 +44,7 @@ end
 
 return function()
     local programmable = ProgrammableFn()
-    local spy = Spy:new(programmable)
+    local spy = Spy(programmable)
     local self = {
         programmable = programmable,
         spy = spy
