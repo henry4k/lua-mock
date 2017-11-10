@@ -29,14 +29,14 @@ local function behaviourReturnValues( behaviour )
 end
 
 function ProgrammableFn:__call( ... )
-    local behaviour = self:findMatchingBehaviour_({...})
+    local behaviour = self:_findMatchingBehaviour({...})
     if not behaviour then
         error('No matching behaviour for call.', 2)
     end
     return behaviourReturnValues(behaviour)
 end
 
-function ProgrammableFn:findMatchingBehaviour_( arguments )
+function ProgrammableFn:_findMatchingBehaviour( arguments )
     for _,behaviour in ipairs(self.behaviours) do
         if ValueMatcher.matches(arguments, behaviour.arguments) then
             return behaviour
@@ -56,7 +56,7 @@ function ProgrammableFn:whenCalled( specification )
     local arguments = specification.with or {}
     local returnSet = specification.thenReturn or {}
 
-    local behaviour = self:findMatchingBehaviour_(arguments)
+    local behaviour = self:_findMatchingBehaviour(arguments)
     if behaviour then
         table.insert(behaviour.returnSets, returnSet)
     else
