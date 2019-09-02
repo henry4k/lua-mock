@@ -1,8 +1,8 @@
 package = 'lua-mock'
-version = '2.1-1'
+version = '2.1-2'
 source = {
     url = 'git://github.com/henry4k/lua-mock',
-    tag = 'v2.1-1'
+    tag = 'v2.1-2'
 }
 description = {
     summary = 'Provides mocking utilities.',

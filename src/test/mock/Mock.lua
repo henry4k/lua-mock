@@ -32,12 +32,12 @@ function Mock:assertCallCount( count )
 end
 
 function Mock:assertCallMatches( query )
-    self.spy.assertCallMatches(query)
+    self.spy:assertCallMatches(query)
     return self
 end
 
 function Mock:assertAnyCallMatches( query )
-    self.spy.assertAnyCallMatches(query)
+    self.spy:assertAnyCallMatches(query)
     return self
 end
 
